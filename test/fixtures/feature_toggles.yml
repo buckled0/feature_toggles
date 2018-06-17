@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  toggle_status: MyString
+  toggle_percentage: MyString
+
+two:
+  name: MyString
+  toggle_status: MyString
+  toggle_percentage: MyString
