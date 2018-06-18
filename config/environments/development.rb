@@ -1,5 +1,5 @@
 Rails.application.configure do
-  # Verifies that versions and hashed value of the package contents in the project's package.json
+# Verifies that versions and hashed value of the package contents in the project's package.json
 config.webpacker.check_yarn_integrity = true
 
   # Settings specified here will take precedence over those in config/application.rb.
@@ -14,6 +14,8 @@ config.webpacker.check_yarn_integrity = true
 
   # Show full error reports.
   config.consider_all_requests_local = true
+
+  config.webpacker.check_yarn_integrity = false
 
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?

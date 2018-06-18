@@ -2,7 +2,7 @@ version: '3'
 services:
   web:
     build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: foreman start -f Procfile.dev
     volumes:
       - .:/featuretoggles
     ports:
@@ -10,7 +10,7 @@ services:
     links:
       - database
     tty: true
-    stdin_open: true  
+    stdin_open: true
   database:
     image: mongo:latest
     container_name: feature_toggle_mongodb

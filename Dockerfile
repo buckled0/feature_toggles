@@ -9,4 +9,4 @@ COPY . /featuretoggles
 
 EXPOSE 3000
 
-CMD ["rails", "s", "-p", "3000", "-b", "0.0.0.0"]
+CMD ["foreman", "start", "-f", "Procfile.dev"]
