@@ -1,17 +1,21 @@
 import React from 'react';
+import $ from 'jquery';
 
 class NewItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
   handleClick() {
-    console.log(this);
     var name = this.refs.name.value;
     var toggleStatus = this.refs.toggle_status.value;
     var togglePercentage = this.refs.toggle_percentage.value;
     $.ajax({
-      url: '/api/v1/toggle_status/create',
+      url: '/api/v1/feature_toggles',
       type: 'POST',
       data: {"feature_toggle": { "name": name, "toggle_status": toggleStatus, "toggle_percentage": togglePercentage } },
-      success: response => {
-        console.log('it worked!', response);
+      success: item => {
+        this.props.handleSubmit(item);
       }
     });
   }
