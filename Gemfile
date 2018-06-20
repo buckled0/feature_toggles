@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'responders'
 gem 'react-rails'
 gem 'haml'
+gem 'jquery-rails'
+gem 'webpacker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
