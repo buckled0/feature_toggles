@@ -1,8 +1,8 @@
-class Api::V1::FeatureTogglesController < ApplicationController
+class Api::V1::FeatureTogglesController < Api::V1::BaseController
   before_action :set_feature_toggle, only: [:show, :edit, :update, :destroy]
 
   def index
-    render json: { feature_toggles: FeatureToggle.all }
+    respond_with FeatureToggle.all
   end
 
   def show

@@ -2,7 +2,7 @@ version: '3'
 services:
   web:
     build: .
-    command: foreman start -f Procfile.dev
+    command: foreman start -f Procfile.dev -p 3000
     volumes:
       - .:/featuretoggles
     ports:
