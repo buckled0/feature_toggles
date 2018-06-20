@@ -2,6 +2,7 @@ import React from 'react';
 
 class NewItem extends React.Component {
   handleClick() {
+    console.log(this);
     var name = this.refs.name.value;
     var toggleStatus = this.refs.toggle_status.value;
     var togglePercentage = this.refs.toggle_percentage.value;
@@ -20,8 +21,8 @@ class NewItem extends React.Component {
         <h2>Add new Feature Toggle</h2>
         <div>
           <input ref="name" />
-          <input ref={input => this.toggle_status = 'red'} type='hidden' />
-          <input ref={input => this.toggle_percentage = '0'} type='hidden' />
+          <input ref="toggle_status" type='hidden' value='red'/>
+          <input ref="toggle_percentage" type='hidden' value='0' />
           <button onClick={this.handleClick}>Submit</button>
         </div>
       </div>
