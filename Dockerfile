@@ -19,6 +19,6 @@ VOLUME /featuretoggles/node_modules
 
 COPY . /featuretoggles
 
-EXPOSE 3000
+EXPOSE 3050
 
-CMD ["foreman", "start", "-f", "Procfile.dev", "-p", "3000"]
+CMD ["foreman", "start", "-f", "Procfile.dev", "-p", "3050"]

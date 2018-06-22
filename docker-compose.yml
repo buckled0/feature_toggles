@@ -2,11 +2,11 @@ version: '3'
 services:
   web:
     build: .
-    command: foreman start -f Procfile.dev -p 3000
+    command: foreman start -f Procfile.dev -p 3050
     volumes:
       - .:/featuretoggles
     ports:
-      - "3000:3000"
+      - "3050:3050"
     links:
       - database
     tty: true

@@ -6,6 +6,7 @@ class Api::V1::FeatureTogglesController < Api::V1::BaseController
   end
 
   def show
+    respond_with @feature_toggle
   end
 
   def new
@@ -26,18 +27,14 @@ class Api::V1::FeatureTogglesController < Api::V1::BaseController
   end
 
   def update
-      if @feature_toggle.update(feature_toggle_params)
-        format.json { render :show, status: :ok, location: @feature_toggle }
-      else
-        format.json { render json: @feature_toggle.errors, status: :unprocessable_entity }
-      end
+      @feature_toggle.update_attributes(feature_toggle_params)
+      @feature_toggle.updated_at = Time.now
+      @feature_toggle.save
+      respond_with @feature_toggle, json: @feature_toggle
   end
 
   def destroy
-    @feature_toggle.destroy
-    respond_to do |format|
-      format.json { head :no_content }
-    end
+    respond_with @feature_toggle.destroy
   end
 
   private
@@ -46,6 +43,6 @@ class Api::V1::FeatureTogglesController < Api::V1::BaseController
     end
 
     def feature_toggle_params
-      params.require(:feature_toggle).permit(:name, :toggle_status, :toggle_percentage)
+      params.require(:feature_toggle).permit(:id, :name, :toggle_status, :toggle_percentage)
     end
 end
