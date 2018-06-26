@@ -37,8 +37,15 @@ class Api::V1::FeatureTogglesController < Api::V1::BaseController
     respond_with @feature_toggle.destroy
   end
 
+  def toggle_status
+    @feature_toggle = FeatureToggle.find_by(name: params[:name])
+    feature_toggle = { feature_toggle: { toggle_status: @feature_toggle.toggle_status, toggle_percentage: @feature_toggle.toggle_percentage }}
+    respond_with feature_toggle
+  end
+
   private
     def set_feature_toggle
+      puts params[:id]
       @feature_toggle = FeatureToggle.find(params[:id])
     end
 

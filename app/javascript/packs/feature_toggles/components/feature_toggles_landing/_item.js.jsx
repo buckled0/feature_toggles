@@ -23,11 +23,11 @@ class Item extends React.Component {
 
   handleEdit() {
     if (this.state.editable) {
-      var id = this.props.item._id.$oid
+      var id = this.props.item.id
       var name = this.refs.name.value;
       var status = this.state.status;
       var percentage = this.refs.toggle_percentage.value;
-      var item = {_id: { $oid: id }, name: name, toggle_status: status, toggle_percentage: percentage}
+      var item = {id: id, name: name, toggle_status: status, toggle_percentage: percentage}
       this.props.handleUpdate(item);
     }
     this.setState({editable: !this.state.editable})
@@ -61,16 +61,19 @@ class Item extends React.Component {
     var toggle_percentage = this.state.editable ? <input type='text' ref='toggle_percentage' defaultValue={this.props.item.toggle_percentage} /> : <p>{this.props.item.toggle_percentage}</p>
 
     return(
-      <div key={this.props.item._id.$oid}>
-        {name}
-        {toggle_status}
-        {toggle_percentage}
-        <button onClick={this.handleEdit}>
-          {" "}
-          {this.state.editable ? "Submit" : "Edit" }{" "}
-        </button>
-        <button onClick={this.props.handleDelete}>Delete</button>
-      </div>
+      <li className="active" key={this.props.item.id}>
+        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Feature Toggles</a>
+        <ul className="collapse list-unstyled" id="feature-toggles">
+          {name}
+          {toggle_status}
+          {toggle_percentage}
+          <button onClick={this.handleEdit}>
+            {" "}
+            {this.state.editable ? "Submit" : "Edit" }{" "}
+          </button>
+          <button onClick={this.props.handleDelete}>Delete</button>
+        </ul>
+      </li>
     )
   }
 }

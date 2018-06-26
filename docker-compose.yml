@@ -9,8 +9,6 @@ services:
       - "3050:3050"
     links:
       - database
-    tty: true
-    stdin_open: true
   database:
     image: mongo:latest
     container_name: feature_toggle_mongodb

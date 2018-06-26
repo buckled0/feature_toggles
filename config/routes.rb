@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   root to: 'site#index'
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :feature_toggles, only: [:index, :new, :show, :create, :destroy, :edit, :update, :toggle_type]
+      get '/feature_toggles/toggle-status', to: 'feature_toggles#toggle_status'
+      resources :feature_toggles, only: [:index, :show, :create, :destroy, :update]
     end
   end
 end

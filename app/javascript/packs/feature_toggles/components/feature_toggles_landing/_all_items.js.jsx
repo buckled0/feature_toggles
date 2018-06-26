@@ -11,16 +11,18 @@ class AllItems extends React.Component {
   render() {
     var items = this.props.items.map((item) => {
       return(
-        <div key={item._id.$oid}>
-          <Item item={item} handleUpdate={this.onUpdate.bind(this)} handleDelete={this.handleDelete.bind(this, item._id.$oid)} />
-        </div>
+        <ul className="list-unstyled components" key={item.id}>
+          <Item item={item} handleUpdate={this.onUpdate.bind(this)} handleDelete={this.handleDelete.bind(this, item.id)} />
+        </ul>
       )
     })
     return(
-      <div>
-        <h2>Active Toggles</h2>
-        {items}
-      </div>
+      <nav>
+        <div className="sidebar-header">
+          <h3>Active Toggles</h3>
+          {items}
+        </div>
+      </nav>
     )
   }
 }

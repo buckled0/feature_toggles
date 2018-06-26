@@ -42,20 +42,20 @@ class Body extends React.Component{
   handleUpdate(item) {
     var featureToggle = { name: item.name, toggle_status: item.toggle_status, toggle_percentage: item.toggle_percentage }
     $.ajax({
-      url: `/api/v1/feature_toggles/${item._id.$oid}`,
+      url: `/api/v1/feature_toggles/${item.id}`,
       type: 'PUT',
       data: { feature_toggle: featureToggle },
       success: () => {
-          this.updateItems({_id: { $oid: item._id.$oid }, name: item.name, toggle_status: item.toggle_status, toggle_percentage: item.toggle_percentage});
+          this.updateItems({id: item.id, name: item.name, toggle_status: item.toggle_status, toggle_percentage: item.toggle_percentage});
       }
     });
   }
 
   updateItems(item) {
     var items = this.state.items.filter((i) => {
-      console.log(i._id.$oid)
+      console.log(i.id)
       console.log(item)
-      return i._id.$oid != item._id.$oid;
+      return i.id != item.id;
     });
     items.push(item);
     this.setState({items: items})
@@ -68,7 +68,7 @@ class Body extends React.Component{
 
   render() {
     return (
-      <div>
+      <div className="wrapper">
         <NewItem handleSubmit={this.handleSubmit} />
         <AllItems items={this.state.items} handleDelete={this.handleDelete} onUpdate={this.handleUpdate} />
       </div>
