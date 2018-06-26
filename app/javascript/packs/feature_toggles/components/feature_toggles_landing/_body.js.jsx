@@ -71,6 +71,16 @@ class Body extends React.Component{
       <div className="wrapper">
         <NewItem handleSubmit={this.handleSubmit} />
         <AllItems items={this.state.items} handleDelete={this.handleDelete} onUpdate={this.handleUpdate} />
+        <div id="content">
+          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container-fluid">
+              <button type="button" id="sidebarCollapse" className="btn btn-info">
+                <i className="fas fa-align-left"></i>
+                <span>Toggle Sidebar</span>
+              </button>
+            </div>
+          </nav>
+        </div>
       </div>
     )
   }

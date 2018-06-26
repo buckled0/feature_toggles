@@ -11,6 +11,10 @@ module: {
         ]
       }
     },
+    {
+      test: /\.css$/,
+      use: [ 'style-loader', 'css-loader' ]   //  <=  Order is very important
+    }
   ]
 }
 environment.loaders.get('sass').use.splice(-1, 0, {

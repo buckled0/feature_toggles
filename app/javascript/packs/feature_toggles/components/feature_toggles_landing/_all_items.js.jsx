@@ -17,7 +17,7 @@ class AllItems extends React.Component {
       )
     })
     return(
-      <nav>
+      <nav id="sidebar">
         <div className="sidebar-header">
           <h3>Active Toggles</h3>
           {items}
