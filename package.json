@@ -1,9 +1,8 @@
 {
   "dependencies": {
-    "@rails/webpacker": "3.5",
+    "@rails/webpacker": "3.5.3",
     "babel-preset-react": "6.24.1",
     "bootstrap": "4.0.0",
-    "css-loader": "0.28.11",
     "jquery": "3.3.1",
     "popper.js": "1.14.3",
     "prop-types": "15.6.2",
@@ -11,7 +10,11 @@
     "react-bootstrap": "0.32.1",
     "react-dom": "16.4.1",
     "react-router-dom": "4.3.1",
-    "style-loader": "0.21.0"
+    "style-loader": "0.21.0",
+    "css-loader": "0.28.11",
+    "sass-loader": "7.0.3",
+    "autoprefixer-loader": "3.2.0",
+    "resolve-url-loader": "2.3.0"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"

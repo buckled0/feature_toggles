@@ -17,12 +17,10 @@ class AllItems extends React.Component {
       )
     })
     return(
-      <nav id="sidebar">
-        <div className="sidebar-header">
-          <h3>Active Toggles</h3>
-          {items}
-        </div>
-      </nav>
+      <div className="sidebar-header">
+        <h3>Active Toggles</h3>
+        {items}
+      </div>
     )
   }
 }

@@ -6,6 +6,7 @@ RUN mkdir /featuretoggles
 
 WORKDIR /featuretoggles
 
+RUN npm i npm@latest -g
 COPY package.json /featuretoggles
 RUN npm install
 

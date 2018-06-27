@@ -59,11 +59,13 @@ class Item extends React.Component {
     var name = this.state.editable ? <input type='text' ref='name' defaultValue={this.props.item.name} /> : <h3>{this.props.item.name}</h3>;
     var toggle_status = this.state.editable ? this.toggleStatus() : <p>{this.props.item.toggle_status}</p>;
     var toggle_percentage = this.state.editable ? <input type='text' ref='toggle_percentage' defaultValue={this.props.item.toggle_percentage} /> : <p>{this.props.item.toggle_percentage}</p>
+    var itemHref = `#featureSubmenu_${this.props.item.id}`;
+    var itemId = `featureSubmenu_${this.props.item.id}`;
 
     return(
       <li className="active" key={this.props.item.id}>
-        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Feature Toggles</a>
-        <ul className="collapse list-unstyled" id="feature-toggles">
+        <a href={itemHref} data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">Feature Toggles</a>
+        <ul className="collapse list-unstyled" id={itemId}>
           {name}
           {toggle_status}
           {toggle_percentage}
