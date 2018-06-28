@@ -1,13 +1,15 @@
 import React from 'react';
 import NewItem from './_new_items.js.jsx';
 import AllItems from './_all_items.js.jsx';
+import FeatureToggleDetails from './main/_feature_toggle_details.js.jsx'
 import $ from 'jquery';
 
 class Body extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      items: []
+      items: [],
+      feature: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -16,6 +18,8 @@ class Body extends React.Component{
 
     this.handleUpdate = this.handleUpdate.bind(this);
     this.updateItems = this.updateItems.bind(this);
+
+    this.changeFeature = this.changeFeature.bind(this);
   }
 
   componentDidMount() {
@@ -53,12 +57,10 @@ class Body extends React.Component{
 
   updateItems(item) {
     var items = this.state.items.filter((i) => {
-      console.log(i.id)
-      console.log(item)
       return i.id != item.id;
     });
     items.push(item);
-    this.setState({items: items})
+    this.setState({feature: item})
   }
 
   handleSubmit(item) {
@@ -66,13 +68,20 @@ class Body extends React.Component{
     this.setState({ items: newState })
   }
 
+  changeFeature(feature) {
+    this.setState({ feature: feature });
+  }
+
   render() {
     return (
       <div className="wrapper">
         <nav id="sidebar">
           <NewItem handleSubmit={this.handleSubmit} />
-          <AllItems items={this.state.items} handleDelete={this.handleDelete} onUpdate={this.handleUpdate} />
+          <AllItems items={this.state.items}  changeFeature={this.changeFeature}/>
         </nav>
+        <div>
+          <FeatureToggleDetails feature={this.state.feature} onDelete={this.handleDelete} onUpdate={this.handleUpdate}/>
+        </div>
       </div>
     )
   }

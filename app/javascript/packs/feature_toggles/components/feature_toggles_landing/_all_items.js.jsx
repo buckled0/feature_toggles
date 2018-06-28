@@ -8,11 +8,15 @@ class AllItems extends React.Component {
   onUpdate(item) {
     this.props.onUpdate(item);
   }
+  changeFeature(feature) {
+    this.props.changeFeature(feature);
+  }
+
   render() {
     var items = this.props.items.map((item) => {
       return(
         <ul className="list-unstyled components" key={item.id}>
-          <Item item={item} handleUpdate={this.onUpdate.bind(this)} handleDelete={this.handleDelete.bind(this, item.id)} />
+          <Item item={item} changeFeature={this.changeFeature.bind(this)} />
         </ul>
       )
     })
