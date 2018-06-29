@@ -7,6 +7,7 @@ class Item extends React.Component {
   }
 
   changeFeature() {
+    $('#feature-div').show();
     this.props.changeFeature(this.props.item)
   }
 

@@ -38,7 +38,6 @@ class FeatureToggleDetails extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.feature !== prevState.item) {
-      $('#feature-div').show();
       this.setState({ item: this.props.feature })
     }
   }
