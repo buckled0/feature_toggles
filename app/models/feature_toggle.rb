@@ -5,4 +5,8 @@ class FeatureToggle
   field :toggle_percentage, type: Integer
   field :inserted_at, type: DateTime, default: Time.now.getutc
   field :updated_at, type: DateTime, default: Time.now.getutc
+
+  def canary_deployment?
+    self.feature_status.eql? 'amber'
+  end
 end
