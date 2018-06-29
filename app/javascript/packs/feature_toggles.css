@@ -32,19 +32,19 @@ a, a:hover, a:focus {
     min-width:250px;
     max-width:250px;
     min-height:100vh;
-    background: #7386D5;
+    background: #0066cc;
     color: #fff;
     transition: all 0.3s;
 }
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #6d7fcc;
+    background: #0066cc;
 }
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+    border-bottom: 1px solid #0066cc;
 }
 
 #sidebar ul li a {
@@ -60,5 +60,5 @@ a, a:hover, a:focus {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
+    background: #0066cc;
 }

@@ -1,5 +1,16 @@
 import React from 'react';
 import $ from 'jquery';
+import styled from 'styled-components';
+
+const NewFeature = styled.div `
+  margin: 10px;
+`;
+
+const NewButton = styled.button `
+  margin-top: 10px;
+  color: #ffffff;
+  background-color: #0066cc;
+`;
 
 class NewItem extends React.Component {
   constructor(props) {
@@ -21,15 +32,14 @@ class NewItem extends React.Component {
   }
   render() {
     return (
-      <div className="new-feature-toggle">
-        <h2>Add new Feature Toggle</h2>
+      <NewFeature className="new-feature-toggle">
         <div>
           <input ref="name" />
           <input ref="toggle_status" type='hidden' value='red'/>
           <input ref="toggle_percentage" type='hidden' value='0' />
-          <button onClick={this.handleClick}>Submit</button>
+          <NewButton onClick={this.handleClick}>Create Toggle</NewButton>
         </div>
-      </div>
+      </NewFeature>
     )
   }
 }

@@ -1,5 +1,17 @@
 import React from 'react';
 import $ from 'jquery';
+import styled from 'styled-components';
+
+const StatusButtons = styled.input `
+  vertical-align: middle;
+  padding: 10px;
+  margin: 10px;
+`;
+
+const FeatureDiv = styled.div `
+  margin: 10px;
+  display: none;
+`;
 
 class FeatureToggleDetails extends React.Component {
   constructor(props) {
@@ -47,13 +59,13 @@ class FeatureToggleDetails extends React.Component {
       <div>
         <fieldset>
           <legend>Choose feature status</legend>
-          <input type='radio' id='red' onChange={this.statusChange.bind(this)} name='feature-status' value='red'/>
+          <StatusButtons type='radio' id='red' onChange={this.statusChange.bind(this)} name='feature-status' value='red'/>
           <label htmlFor='red'>Red</label>
 
-          <input type='radio' id='amber' onChange={this.statusChange.bind(this)} name='feature-status' value='amber'/>
+          <StatusButtons type='radio' id='amber' onChange={this.statusChange.bind(this)} name='feature-status' value='amber'/>
           <label htmlFor='amber'>Amber</label>
 
-          <input type='radio' id='green' onChange={this.statusChange.bind(this)} name='feature-status' value='green'/>
+          <StatusButtons type='radio' id='green' onChange={this.statusChange.bind(this)} name='feature-status' value='green'/>
           <label htmlFor='green'>Green</label>
         </fieldset>
       </div>
@@ -66,7 +78,7 @@ class FeatureToggleDetails extends React.Component {
     var toggle_percentage = this.state.editable ? <input type='text' ref='toggle_percentage' defaultValue={this.state.item.toggle_percentage} /> : <p>{this.state.item.toggle_percentage}</p>
 
     return(
-      <div id="feature-div" style={{ display: 'none' }}>
+      <FeatureDiv id="feature-div">
         {name}
         {toggle_status}
         {toggle_percentage}
@@ -75,7 +87,7 @@ class FeatureToggleDetails extends React.Component {
           {this.state.editable ? "Submit" : "Edit" }{" "}
         </button>
         <button onClick={this.handleDelete}>Delete</button>
-      </div>
+      </FeatureDiv>
     )
   }
 }

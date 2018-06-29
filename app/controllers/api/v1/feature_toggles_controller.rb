@@ -39,17 +39,18 @@ class Api::V1::FeatureTogglesController < Api::V1::BaseController
 
   def toggle_status
     @feature_toggle = FeatureToggle.find_by(name: params[:name])
-    feature_toggle = { feature_toggle: { toggle_status: @feature_toggle.toggle_status, toggle_percentage: @feature_toggle.toggle_percentage }}
+
+    feature_toggle = { feature_toggle: { toggle_status: @feature_toggle.toggle_status, toggle_percentage: @feature_toggle.toggle_percentage } }
     respond_with feature_toggle
   end
 
   private
-    def set_feature_toggle
-      puts params[:id]
-      @feature_toggle = FeatureToggle.find(params[:id])
-    end
+  def set_feature_toggle
+    puts params[:id]
+    @feature_toggle = FeatureToggle.find(params[:id])
+  end
 
-    def feature_toggle_params
-      params.require(:feature_toggle).permit(:id, :name, :toggle_status, :toggle_percentage)
-    end
+  def feature_toggle_params
+    params.require(:feature_toggle).permit(:id, :name, :toggle_status, :toggle_percentage)
+  end
 end

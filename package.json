@@ -14,7 +14,8 @@
     "css-loader": "0.28.11",
     "sass-loader": "7.0.3",
     "autoprefixer-loader": "3.2.0",
-    "resolve-url-loader": "2.3.0"
+    "resolve-url-loader": "2.3.0",
+    "styled-components": "3.3.3"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"

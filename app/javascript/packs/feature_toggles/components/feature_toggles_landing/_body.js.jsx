@@ -1,8 +1,14 @@
 import React from 'react';
-import NewItem from './_new_items.js.jsx';
-import AllItems from './_all_items.js.jsx';
+import NewItem from './sidebar/_new_items.js.jsx';
+import AllItems from './sidebar/_all_items.js.jsx';
+import Header from './main/_header.js.jsx';
 import FeatureToggleDetails from './main/_feature_toggle_details.js.jsx'
 import $ from 'jquery';
+import styled from 'styled-components'
+
+const BodyDiv = styled.div`
+  width: 100%;
+`;
 
 class Body extends React.Component{
   constructor(props) {
@@ -40,6 +46,7 @@ class Body extends React.Component{
     var newItems = this.state.items.filter((item) => {
       return item._id.$oid != id;
     });
+    $('#feature-div').hide();
     this.setState({ items: newItems })
   }
 
@@ -79,9 +86,10 @@ class Body extends React.Component{
           <NewItem handleSubmit={this.handleSubmit} />
           <AllItems items={this.state.items}  changeFeature={this.changeFeature}/>
         </nav>
-        <div>
+        <BodyDiv>
+          <Header />
           <FeatureToggleDetails feature={this.state.feature} onDelete={this.handleDelete} onUpdate={this.handleUpdate}/>
-        </div>
+        </BodyDiv>
       </div>
     )
   }
