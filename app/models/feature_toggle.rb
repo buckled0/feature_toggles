@@ -7,6 +7,6 @@ class FeatureToggle
   field :updated_at, type: DateTime, default: Time.now.getutc
 
   def canary_deployment?
-    self.feature_status.eql? 'amber'
+    self.toggle_status.eql? 'amber'
   end
 end

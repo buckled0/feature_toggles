@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'site#index'
+  get '/feature-toggles', to: 'site#index'
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       get '/feature_toggles/toggle-status', to: 'feature_toggles#toggle_status'

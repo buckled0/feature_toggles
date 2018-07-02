@@ -40,8 +40,13 @@ class Api::V1::FeatureTogglesController < Api::V1::BaseController
   def toggle_status
     @feature_toggle = FeatureToggle.find_by(name: params[:name])
 
-    feature_toggle = { feature_toggle: { toggle_status: @feature_toggle.toggle_status, toggle_percentage: @feature_toggle.toggle_percentage } }
-    respond_with feature_toggle
+    if @feature_toggle.present?
+      feature = Api::V1::CanaryDeployment.new(@feature_toggle)
+      feature_toggle = { feature_toggle: { toggle_status: @feature_toggle.toggle_status, toggle_percentage: @feature_toggle.toggle_percentage, cookie: feature.canary_cookie } }
+      respond_with feature_toggle
+    else
+      respond_with error: { message: 'Toggle not found' }, status: 500
+    end
   end
 
   private
