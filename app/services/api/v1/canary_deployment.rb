@@ -1,6 +1,7 @@
 module Api
   module V1
     class CanaryDeployment
+
       FEATURE_TEST_COOKIE_KEY = 'jp'
 
       def initialize(feature_toggle)

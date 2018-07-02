@@ -22,7 +22,7 @@ class Api::V1::FeatureTogglesController < Api::V1::BaseController
     if @feature_toggle.save
       render json: @feature_toggle, status: :ok
     else
-      render json: { message: @feature_toggle.errors[:name] }, status: :unprocessable_entity
+      render json: @feature_toggle.errors, status: :unprocessable_entity
     end
   end
 

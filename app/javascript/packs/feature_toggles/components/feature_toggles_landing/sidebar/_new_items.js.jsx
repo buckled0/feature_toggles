@@ -26,11 +26,15 @@ class NewItem extends React.Component {
       type: 'POST',
       data: {"feature_toggle": { "name": name, "toggle_status": toggleStatus, "toggle_percentage": togglePercentage } },
       success: item => {
+        $('#new-feature-error').empty();
+        $('#toggle-name').val('');
         this.props.handleSubmit(item);
       },
       error: error => {
-        var errorJson = error.responseJSON.message[0];
-        $('#new-feature-error').append(`<p>${errorJson}</p>`);
+        var errorResponse = error.responseJSON.name
+        errorResponse.forEach(error => {
+          $('#new-feature-error').append(`<p>Name ${error}</p>`);
+        });
       }
     });
   }
@@ -38,7 +42,7 @@ class NewItem extends React.Component {
     return (
       <NewFeature className="new-feature-toggle">
         <div>
-          <input ref="name" />
+          <input id="toggle-name" ref="name" />
           <input ref="toggle_status" type='hidden' value='red'/>
           <input ref="toggle_percentage" type='hidden' value='0' />
           <NewButton onClick={this.handleClick}>Create Toggle</NewButton>
