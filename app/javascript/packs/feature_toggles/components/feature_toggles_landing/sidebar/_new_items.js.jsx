@@ -27,6 +27,10 @@ class NewItem extends React.Component {
       data: {"feature_toggle": { "name": name, "toggle_status": toggleStatus, "toggle_percentage": togglePercentage } },
       success: item => {
         this.props.handleSubmit(item);
+      },
+      error: error => {
+        var errorJson = error.responseJSON.message[0];
+        $('#new-feature-error').append(`<p>${errorJson}</p>`);
       }
     });
   }
@@ -38,6 +42,8 @@ class NewItem extends React.Component {
           <input ref="toggle_status" type='hidden' value='red'/>
           <input ref="toggle_percentage" type='hidden' value='0' />
           <NewButton onClick={this.handleClick}>Create Toggle</NewButton>
+        </div>
+        <div id="new-feature-error">
         </div>
       </NewFeature>
     )

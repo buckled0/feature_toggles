@@ -22,7 +22,7 @@ class Api::V1::FeatureTogglesController < Api::V1::BaseController
     if @feature_toggle.save
       render json: @feature_toggle, status: :ok
     else
-      render json: { message: @feature_toggle.errors, error_code: @feature_toggle.error_code }, status: :unprocessable_entity
+      render json: { message: @feature_toggle.errors[:name] }, status: :unprocessable_entity
     end
   end
 
@@ -51,7 +51,6 @@ class Api::V1::FeatureTogglesController < Api::V1::BaseController
 
   private
   def set_feature_toggle
-    puts params[:id]
     @feature_toggle = FeatureToggle.find(params[:id])
   end
 
