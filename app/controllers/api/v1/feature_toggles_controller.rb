@@ -20,9 +20,9 @@ class Api::V1::FeatureTogglesController < Api::V1::BaseController
     @feature_toggle = FeatureToggle.new(feature_toggle_params)
 
     if @feature_toggle.save
-      render json: @feature_toggle, status: :ok
+      respond_with @feature_toggle, json: @feature_toggle, status: :ok
     else
-      render json: @feature_toggle.errors, status: :unprocessable_entity
+      respond_with @feature_toggle.errors, json: @feature_toggle.errors, status: :unprocessable_entity
     end
   end
 
