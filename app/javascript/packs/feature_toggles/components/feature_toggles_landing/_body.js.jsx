@@ -6,8 +6,43 @@ import FeatureToggleDetails from './main/_feature_toggle_details.js.jsx'
 import $ from 'jquery';
 import styled from 'styled-components'
 
+const WrapperDiv = styled.div`
+  display:flex;
+  align-items:stretch;
+`;
+
 const BodyDiv = styled.div`
   width: 100%;
+`;
+
+const Sidebar = styled.nav`
+  min-width:250px;
+  max-width:250px;
+  min-height:100vh;
+  background: #0066cc;
+  color: #fff;
+  transition: all 0.3s;
+
+  h3 {
+    padding: 20px;
+    background: #0066cc;
+  }
+
+  ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #0066cc;
+  }
+
+  ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+  }
+
+  ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+  }
 `;
 
 class Body extends React.Component{
@@ -81,16 +116,16 @@ class Body extends React.Component{
 
   render() {
     return (
-      <div className="wrapper">
-        <nav id="sidebar">
+      <WrapperDiv>
+        <Sidebar>
           <NewItem handleSubmit={this.handleSubmit} />
           <AllItems items={this.state.items}  changeFeature={this.changeFeature}/>
-        </nav>
+        </Sidebar>
         <BodyDiv>
           <Header />
           <FeatureToggleDetails feature={this.state.feature} onDelete={this.handleDelete} onUpdate={this.handleUpdate}/>
         </BodyDiv>
-      </div>
+      </WrapperDiv>
     )
   }
 }
