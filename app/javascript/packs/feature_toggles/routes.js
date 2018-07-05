@@ -7,7 +7,7 @@ import LandingPage from './components/landingPage';
 const App = (props) => (
   <Router>
     <div>
-      <Route exact path='/feature-toggles' component={LandingPage} />
+      <Route exact path='/admin/feature-toggles' component={LandingPage} />
     </div>
   </Router>
 )
