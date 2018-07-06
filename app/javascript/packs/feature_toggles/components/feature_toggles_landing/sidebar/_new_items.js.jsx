@@ -22,7 +22,7 @@ class NewItem extends React.Component {
     var toggleStatus = this.refs.toggle_status.value;
     var togglePercentage = this.refs.toggle_percentage.value;
     $.ajax({
-      url: '/api/v1/feature_toggles',
+      url: '/service/features/api/v1/feature_toggles',
       type: 'POST',
       data: {"feature_toggle": { "name": name, "toggle_status": toggleStatus, "toggle_percentage": togglePercentage } },
       success: item => {

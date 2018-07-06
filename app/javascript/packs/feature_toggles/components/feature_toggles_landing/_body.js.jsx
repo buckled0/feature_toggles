@@ -64,12 +64,12 @@ class Body extends React.Component{
   }
 
   componentDidMount() {
-    $.getJSON('/api/v1/feature_toggles.json', (response) => { this.setState({ items: response }) });
+    $.getJSON('/service/features/api/v1/feature_toggles.json', (response) => { this.setState({ items: response }) });
   }
 
   handleDelete(id) {
     $.ajax({
-      url: `/api/v1/feature_toggles/${id}`,
+      url: `/service/features/api/v1/feature_toggles/${id}`,
       type: 'DELETE',
       success:() => {
         this.removeFeatureClient(id);
@@ -88,7 +88,7 @@ class Body extends React.Component{
   handleUpdate(item) {
     var featureToggle = { name: item.name, toggle_status: item.toggle_status, toggle_percentage: item.toggle_percentage }
     $.ajax({
-      url: `/api/v1/feature_toggles/${item.id}`,
+      url: `/service/features/api/v1/feature_toggles/${item.id}`,
       type: 'PUT',
       data: { feature_toggle: featureToggle },
       success: () => {

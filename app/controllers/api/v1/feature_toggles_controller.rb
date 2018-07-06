@@ -34,7 +34,7 @@ class Api::V1::FeatureTogglesController < Api::V1::BaseController
   end
 
   def destroy
-    respond_with @feature_toggle.destroy
+    respond_with @feature_toggle.destroy, json: { message: 'Toggle deleted' }, status: :ok
   end
 
   def toggle_status
