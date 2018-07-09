@@ -12,6 +12,9 @@ class Header extends React.Component {
   render(){
     return (
       <HeaderDiv>
+        <button type="button" id="sidebarCollapse" className="btn btn-info">
+            <i className="fas fa-bars"></i>
+        </button>
         <h1>Feature Toggles</h1>
       </HeaderDiv>
     )

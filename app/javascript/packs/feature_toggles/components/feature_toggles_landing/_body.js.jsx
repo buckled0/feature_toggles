@@ -7,8 +7,9 @@ import $ from 'jquery';
 import styled from 'styled-components'
 
 const WrapperDiv = styled.div`
-  display:flex;
-  align-items:stretch;
+  display: flex;
+  width: 100%;
+  align-items: stretch;
 `;
 
 const BodyDiv = styled.div`
@@ -22,6 +23,10 @@ const Sidebar = styled.nav`
   background: #0066cc;
   color: #fff;
   transition: all 0.3s;
+
+  &.active {
+    margin-left: -250px;
+  }
 
   h3 {
     padding: 20px;
@@ -43,7 +48,23 @@ const Sidebar = styled.nav`
     color: #7386D5;
     background: #fff;
   }
+
+  @media (max-width: 768px) {
+    margin-left: -250px;
+    &.active {
+      margin-left: 0;
+    }
+    #sidebarCollapse span {
+      display: none;
+    }
+}
 `;
+
+$(document).ready(function () {
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+});
 
 class Body extends React.Component{
   constructor(props) {
@@ -117,7 +138,7 @@ class Body extends React.Component{
   render() {
     return (
       <WrapperDiv>
-        <Sidebar>
+        <Sidebar id="sidebar">
           <NewItem handleSubmit={this.handleSubmit} />
           <AllItems items={this.state.items}  changeFeature={this.changeFeature}/>
         </Sidebar>

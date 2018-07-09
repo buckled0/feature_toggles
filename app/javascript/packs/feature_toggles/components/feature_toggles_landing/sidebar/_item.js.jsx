@@ -13,7 +13,7 @@ class Item extends React.Component {
 
   render() {
     return(
-      <li className="active" key={this.props.item.id}>
+      <li key={this.props.item.id}>
         <a href='#' onClick={this.changeFeature}>{this.props.item.name}</a>
       </li>
     )
